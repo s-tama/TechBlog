@@ -7,7 +7,7 @@
 <summary>目次</summary>
 
 <div>
-<>はじめに
+はじめに
 
 1. [Universal Render Pipline ( URP ) って何？](#001)
 2. [レンダーパイプラインとは](#002)
