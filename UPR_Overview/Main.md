@@ -109,7 +109,7 @@ URPではビルトインに変わる標準シェーダとして以下が提供�
 ## シェーダとマテリアルについて
 【2.URPで使用できるシェーダ】でも説明しましたが、URPではBuilt-inで使用されていた「Surface Shader」が使えません。  
 なのでマテリアルの設定にはURP用のシェーダを設定する必要があります。（Standardを使用するとUnityユーザーさんおなじみピンク色になります）  
-<img src="Resources/Images/sample_008.jpg" width=400> <img src="Resources/Images/sample_007.jpg" width=400>
+<img src="Resources/Images/sample_008.jpg" width=500> <img src="Resources/Images/sample_007.jpg" width=500>
 
 ## URPは使うべきか
 近いうちにBuilt-inから完全に置き換わる事を考えると、これから新規で動くプロジェクトはURPを使用したほうがよさそう  
