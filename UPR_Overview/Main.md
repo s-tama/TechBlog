@@ -1,4 +1,3 @@
-# URPを覚えよう UniversalRenderPiplineAsset
 # URPを覚えよう ～特徴からプロジェクト作成まで～
 
 この記事はURPを勉強し始めた筆者のメモ書きです
