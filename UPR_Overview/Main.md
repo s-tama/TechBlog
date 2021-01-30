@@ -6,50 +6,51 @@
 <details open>
 <summary>目次</summary>
 
-ついにこの時が...
-1. Universal Render Pipline ( URP ) って何？
-2. Scriptable Render Pipline ( SRP ) について
-3. URPの使用方法
-4. URPテンプレートについて
+1. はじめに
+2. Universal Render Pipline ( URP ) って何？
+3. レンダーパイプラインとは
+3. Scriptable Render Pipline ( SRP ) とURP
+4. URPの特徴
+5. まとめ
 
 </details>
 
-## ついにこの時が...
-現在開発中のゲームでURPを使用することになりました。  
+## はじめに
+最近始動したプロジェクトでURPを使用することになりました。  
 実は前々から興味はあれど手をつけずにいたので、この機会にちゃんと勉強します。  
 
-## 1.Universal Render Pipline ( URP ) とは
-Unity2021を目途に完全にBuilt-inに代わるレンダーパイプラインとして使用されるパイプラインです。
+## 1.Universal Render Pipline ( URP ) って何？
+Universal Render Pipeline、通称URPは（長いのでURPで統一します）、Unity従来のレンダリングパイプラインである「Built-in」に変わる新しい機能として提供されているレンダリングパイプラインです。  
 URPはオープンソースとなっており、現在も[GitHub](https://github.com/Unity-Technologies/Graphics)にて開発が進められています。
 
-- Universal Render Pipline、通称URPは、UnityデフォルトのパイプラインであるBuilt-in Render Piplineの後継として採用されることが決まっている新しいパイプラインの事
+- UnityデフォルトのパイプラインであるBuilt-in Render Piplineの後継として採用されることが決まっている新しいレンダーパイプラインの事
 - 今まではLighht Weight Render Pipline、通称LWRPとして配布されていたが、unity2018以降、URPに改名
 
-## レンダーパイプラインとは
-レンダリングパイプラインとは、配置したオブジェクトが最終的に画面に表示されるまでに行われる作業の工程の事です。
+## レンダリングパイプラインとは
+レンダリングパイプラインとは、ゲーム空間上に配置したオブジェクトが最終的に画面に表示されるまでに行われる作業の工程の事です。
 
-この工程で行われる各処理の事をPASSといい、パイプラインに渡されてきたオブジェクトは各PASSを通り、最終的に画面内に絵として表示されます。
+この工程で行われる各処理の事をPASSといい、パイプラインに渡されてきたオブジェクトは各PASSを通り、最終的に画面上に絵として表示されます。
 
-PASSによって行われる処理の例
+### PASSによって行われる処理の例
 - カリング処理
 - 陰影処理
 - ラスタライズ
 - ポストプロセス など
 
-以下は、レンダリングパイプラインの作業工程の図です。  
+以下は、レンダリングパイプラインの作業工程のレ例図です。  
 > 【CEDEC2020 Unityの次の標準レンダリングパイプライン Universal Render Pipeline は何がどう変わるのか】より引用
 
 <img src=Resources/Images/sample_000.jpg height=500> 
 
-そして、このパイプラインの各PASSを自作できるようになったのが、次に説明するScriptable Render Pipline、通称SRPになります
+そして、このパイプラインの各PASSをカスタマイズできるようになったのが、次に説明するScriptable Render Piplineになります
 
 ## 2. Scriptable Render Pipline ( SRP ) とURP
-SRPはUnity5から試験的に導入されることとなり、Unity2018から正式版として組み込まれることになりました。  
+Scriptable Render Pipeline、通称SRPは（長いのでSRPで統一します）、はUnity5から試験的に導入されることとなり、Unity2018から正式版として組み込まれることになりました。  
 前項で触れた、レンダリングパイプラインのPASSを自由に組み替えられるパッケージとなります。  
 ただ、SRP単体では何も表示されない状態なので、自分で全て組み立てる必要があります。
 
-Unity公式マニュアルの説明によると、完全にカスタマイズ可能とのことです  
-https://docs.unity3d.com/ja/2018.4/Manual/ScriptableRenderPipeline.html  
+Unity公式マニュアルの説明によると、完全にカスタマイズ可能とのことです。  
+<img src="Resources/Images/sample_009.jpg" height=50>  
 
 SRP自体は「Package Manager」または開発中のGitHubからインポートすることで使用可能となります。    
 リスト一番上の「Core RP Library」がSRPのパッケージです。（ちなみに一つ下が本記事で説明している「URP」パッケージ）  
@@ -60,9 +61,12 @@ SRP自体は「Package Manager」または開発中のGitHubからインポー�
 
 SRPは自由度の高いパッケージですが、正直パイプラインを1から全て作成しようと思うと、かなりの時間と手間が必要になってきます。  
 そこでUnityさんは、最初から誰でも使えるように組み立ててくれた2つのパイプラインがあります。  
-その一つがこの記事のタイトルにもなっている「Universal Render Pipline」通称URPです。（長いのでURPで統一します）
+その一つがこの記事で説明していくUniversal Render Pipeline ( URP ) です。
 
 ## URPの特徴
+以下にURPの特徴やURPでできることをまとめていきます
+
+### 特徴
 - URPはモバイルからハイエンドなコンソールゲームまで、幅広い表現を可能としている
 - 「シングルパス・フォワードレンダリング」というレンダリング方式を採用しており、ドローコール数を抑える事が可能
 - カメラごとに「2D」「3D」のレンダラーを分けて使用することが可能（それぞれ実行されるパスが異なる）
@@ -70,7 +74,7 @@ SRPは自由度の高いパッケージですが、正直パイプラインを1�
     - 2D Renderer : 2D専用のレンダリング（この機能はURPのみに採用されている）
     - Custom Renderer : 独自にカスタムしたレンダラーに切り替えることも可能
 
-## URPで使用できるシェーダ
+### URPで使用できるシェーダ
 URPではビルトインに変わる標準シェーダとして以下が提供用意されています
 - Lit : 物理ベースのシェーダ
 - Simple Lit : 非物理ベースのシェーダ
@@ -79,16 +83,16 @@ URPではビルトインに変わる標準シェーダとして以下が提供�
 ビルトインから用意されているシェーダでは、以下が使用可能となっています
 - Unlit : ライトの影響を受けないシェーダ
 
-## URPのデメリット
+### URPのデメリット
 - ビルトインの標準シェーダであった「Surface」が使用できないため、アセットストアなどからインポートしてきたアセットはURPに対応させる必要がある
 - 「Shadow Mask」「Point Light Shadow」などの影の表現が使えない
 - 「SSR」「Auto Exposure」「SSAO」などの一部のポストプロセスが使えないため、自作する必要がある
 下2つについては、近いうちに実装されていく予定らしいのです。  
 どうしても使いたい場合、今はまだ自作する必要があります。
 
-## 3.URPの使用方法
+## 3.URPの導入方法
 ### 新規プロジェクトを作成する場合
-新規でプロジェクトを作成する場合は、作成画面の「Universal Render Pipline」を選択します。  
+新規でプロジェクトを作成する場合は、作成画面の「Universal Render Pipline」を選択します。   
 <img src="Resources/Images/sample_003.jpg" height=500>
 
 ### 既存プロジェクトに導入する場合
@@ -131,8 +135,9 @@ URPではビルトインに変わる標準シェーダとして以下が提供�
 - アセットストアで探す
 - 頑張って自作
 
-以上となります。
+以上となります。  
 今回はURPとは何なのか～URPの導入までを書きました。  
+間違っている箇所等があれば、コメント欄にて指摘していただけると嬉しいです。  
 今後も調べた事や勉強したことなどを記事にしていくので、よろしくお願いします。
 
 ## 参考サイト
@@ -151,5 +156,5 @@ https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@10.3/manu
 【npaka 様】Unityのレンダーパイプライン  
 https://note.com/npaka/n/n5c7c11512999
 
-## 参考文献
+## 参考書籍
 【染井吉野ゲームズ 様】Unityシェーダープログラミングの教科書4　SRP[1]UniversalRP/Litシェーダー解説編
